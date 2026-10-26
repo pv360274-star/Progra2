@@ -1,8 +1,7 @@
-package ini;
+package com.uce;
 
-import java.util.Scanner;
-
-public class Tramites_de_turnos {
+public class TramiteTurnos {
+	
 	public static int contadorTurnos = 0;
 
     private String nombre;
@@ -11,7 +10,7 @@ public class Tramites_de_turnos {
     private String servicio;
     private int turnoAsignado;
 
-    public Tramites_de_turnos() {
+    public TramiteTurnos() {
     }
     public void ingresarDatos(String nombre, String apellido, String cedula) {
         this.nombre = nombre;
@@ -44,39 +43,11 @@ public class Tramites_de_turnos {
         } else if (this.servicio.equalsIgnoreCase("Atencion al cliente")) {
             cubiculo = 2;
         } else {
-            cubiculo = 3; // Cubículo general para otros trámites
+            cubiculo = 3; 
         }
 
         System.out.println("Cubículo asignado: Módulo " + cubiculo);
         System.out.println("----------------------------------------");
-    }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("=== SISTEMA DE TOMA DE TURNOS ===");
-
-        Tramites_de_turnos turno1 = new Tramites_de_turnos();
-
-        System.out.print("Ingrese nombre: ");
-        String nom = scanner.nextLine();
-
-        System.out.print("Ingrese apellido: ");
-        String ape = scanner.nextLine();
-
-        System.out.print("Ingrese cédula: ");
-        String ced = scanner.nextLine();
-
-        turno1.ingresarDatos(nom, ape, ced);
-
-        System.out.println("Servicios disponibles: Caja, Atencion al cliente, General");
-        System.out.println("Ingrese el servicio que desea: ");
-        String serv = scanner.nextLine();
-
-        turno1.generarServicio(serv);
-
-        turno1.asignaCubiculo();
-
-        scanner.close();
-    }
+}
 }
