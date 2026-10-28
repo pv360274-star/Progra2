@@ -2,27 +2,39 @@ package com.uce;
 
 public class TramiteTurnos {
 	
+	
 	public static int contadorTurnos = 0;
 
     private String nombre;
     private String apellido;
     private String cedula;
     private String servicio;
-    private int turnoAsignado;
+    private int nTurno;
+    private int nTurnoAsignado;
 
-    public TramiteTurnos() {
-    }
-    public void ingresarDatos(String nombre, String apellido, String cedula) {
+
+	public String ingresarDatos(String nombre, String apellido, String cedula) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
+        return (nombre + apellido + cedula);
     }
-
-    public void generarServicio(String servicio) {
-        this.servicio = servicio;
-        
-        contadorTurnos++;
-        this.turnoAsignado = contadorTurnos;
+    
+    public String ingresarDatos(String nombre, String apellido, String cedula, String servi) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.servicio = servi;
+        nTurno=nTurno +1;
+        nTurnoAsignado=nTurno;
+       return "Usuario ingresado correctamente";
+    }
+    
+    public String generarServicio(String servi) {
+        this.servicio = servi;
+        nTurno=nTurno +1;
+        nTurnoAsignado=nTurno;
+       return servicio + nTurnoAsignado;
     }
 
     public void imprimirInfo() {
@@ -30,24 +42,16 @@ public class TramiteTurnos {
         System.out.println("Cliente: " + this.nombre + " " + this.apellido);
         System.out.println("Cédula: " + this.cedula);
         System.out.println("Servicio solicitado: " + this.servicio);
-        System.out.println("Número de turno asignado: #" + this.turnoAsignado);
+        System.out.println("Número de turno asignado: #" + this.nTurnoAsignado);
     }
 
-    public void asignaCubiculo() {
+    public int asignaCubiculo(int nDesocupado, String servicio) {
+    	
+    	System.out.println("Acerquese al cubiculo : " + nDesocupado + " al servicio " + servicio);
+    	
+    	return nDesocupado;
      
-        imprimirInfo();
-
-        int cubiculo;
-        if (this.servicio.equalsIgnoreCase("Caja") || this.servicio.equalsIgnoreCase("Pagos")) {
-            cubiculo = 1;
-        } else if (this.servicio.equalsIgnoreCase("Atencion al cliente")) {
-            cubiculo = 2;
-        } else {
-            cubiculo = 3; 
-        }
-
-        System.out.println("Cubículo asignado: Módulo " + cubiculo);
-        System.out.println("----------------------------------------");
-
-}
+    }
+    
+   
 }
